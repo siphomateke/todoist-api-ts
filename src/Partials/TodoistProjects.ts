@@ -27,13 +27,18 @@ export namespace TodoistProjects {
 
   export const createProject = (
     axiosInstance: Axios.AxiosInstance,
-    projectName: string
+    projectName: string,
+    projectParentId?: number,
   ): Promise<TodoistProject> => {
     return new Promise((resolve, reject) => {
+      const data: { name: string, parent?: number } = { name: projectName };
+      if (typeof projectParentId !== 'undefined') {
+        data.parent = projectParentId;
+      }
       axiosInstance
         .post(
           "projects",
-          { name: projectName },
+          data,
           { headers: { "Content-Type": "application/json" } }
         )
         .then(res => resolve(res.data))

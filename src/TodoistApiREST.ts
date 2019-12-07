@@ -38,8 +38,8 @@ export default class TodoistApiREST {
   }
 
   /** Creates a new project and returns its value in a JSON format. */
-  public createProject(projectName: string): Promise<TodoistProject> {
-    return TodoistProjects.createProject(this.axiosInstance, projectName);
+  public createProject(projectName: string, projectParentId?: number): Promise<TodoistProject> {
+    return TodoistProjects.createProject(this.axiosInstance, projectName, projectParentId);
   }
 
   /** Returns a JSON object containing a project object related to the given id. */
