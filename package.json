@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "axios-rate-limit": "^1.2.1",
     "uuid": "^3.1.0"
   }
 }
