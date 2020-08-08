@@ -1,7 +1,6 @@
 import Axios = require("axios");
 import { default as axios } from "axios";
 import rateLimit = require('axios-rate-limit');
-import { v4 as uuid4 } from "uuid";
 
 import { TodoistProjects } from "./Partials/TodoistProjects";
 import { TodoistTasks } from "./Partials/TodoistTasks";
@@ -21,12 +20,11 @@ import {
 export default class TodoistApiREST {
   private axiosInstance: Axios.AxiosInstance;
 
-  constructor(token: StrInt, uuid?: string) {
+  constructor(token: StrInt) {
     this.axiosInstance = rateLimit(axios.create({
       baseURL: "https://api.todoist.com/rest/v1/",
       headers: {
-        Authorization: `Bearer ${token}`,
-        "X-Request-Id": uuid || uuid4()
+        Authorization: `Bearer ${token}`
       }
     }), {
       // See https://developer.todoist.com/rest/v1/#requests-per-minute
