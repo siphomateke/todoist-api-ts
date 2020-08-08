@@ -34,6 +34,12 @@ The API token can be created/found in your Todoist settings under the Integratio
 const api = new TodoistApiREST(123456789);
 ```
 
+You can also provide a UUID to uniquely identify the request and prevent it from being run twice.
+
+```javascript
+const api = new TodoistApiREST(123456789, 'e23db5ec-2f73-478a-a008-1cb4178d2fd1');
+```
+
 ## Features
 
 ### Promise-based

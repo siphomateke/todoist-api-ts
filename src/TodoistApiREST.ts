@@ -20,12 +20,12 @@ import {
 export default class TodoistApiREST {
   private axiosInstance: Axios.AxiosInstance;
 
-  constructor(token: StrInt) {
+  constructor(token: StrInt, uuid?: string) {
     this.axiosInstance = axios.create({
       baseURL: "https://api.todoist.com/rest/v1/",
       headers: {
         Authorization: `Bearer ${token}`,
-        "X-Request-Id": uuid4()
+        "X-Request-Id": uuid || uuid4()
       }
     });
   }
